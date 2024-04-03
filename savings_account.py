@@ -1,7 +1,6 @@
 # Import local Account.py module
 import Account as A
 
-
 # Define a function for the Savings Account
 def create_savings_account(balance, interest_rate, months):
     """Creates a savings account, calculates interest earned, and updates the account balance.
@@ -17,20 +16,22 @@ def create_savings_account(balance, interest_rate, months):
     """
     # Create an instance of the `Account` class and pass in the balance 
     # and interest parameters:
-    x = A(balance,interest_rate)
+    x = A.Account(balance,interest_rate)
     
     # Calculate interest earned
     # interest = balance * (apr/100 * months/12)
-    interest = balance * ((interest_rate/100) * (months/12))
+    interest_earned = balance * ((interest_rate/100) * (months/12))
 
     # Update the savings account balance by adding the interest earned
-    print(type(A))
+    updated_balance = balance + interest_earned
+    
+    # Pass the updated_balance to the set balance method using the 
+    # instance of the SavingsAccount class.
+    x.set_balance(updated_balance)
 
-    # Pass the updated_balance to the set balance method using the instance of the SavingsAccount class.
-    # ADD YOUR CODE HERE
-
-    # Pass the interest_earned to the set interest method using the instance of the SavingsAccount class.
-    # ADD YOUR CODE HERE
+    # Pass the interest_earned to the set interest method using the 
+    # instance of the SavingsAccount class.
+    x.set_interest(interest_earned)
 
     # Return the updated balance and interest earned.
-    return  # ADD YOUR CODE HERE
+    return  updated_balance, interest_earned
